@@ -6,6 +6,7 @@
 
 <a href="/board/create" class="btn">게시글 작성하러 가기</a>
 
+<div class="wrapper">
 <c:choose>
 <c:when test="${boardList != null}">
 <table>
@@ -24,8 +25,8 @@
     <td><a href="/board/view/${board.id}"> ${board.title} </a></td>
     <td><a href="/board/view/${board.id}"> ${board.content}</a></td>
     <td><a href="/board/view/${board.id}"> ${board.writer}</a></td>
-    <td><a href="/board/delete/${board.id}">삭제</a></td>
-    <td><a href="/board/update/${board.id}">수정</a></td>
+    <td><a href="/board/delete/${board.id}" class="btn">삭제</a></td>
+    <td><a href="/board/update/${board.id}" class="btn">수정</a></td>
   </tr>
 	</c:forEach>
 </tbody>
@@ -37,7 +38,7 @@
 </c:choose>
 
 <!-- pagination -->
-<ul>
+<ul class="pagination">
 <li>
 	<a href="?page=${currentPage - 1}&size=${size}" >prev</a>
 </li>
@@ -50,6 +51,7 @@
 	<a href="?page=${currentPage + 1}&size=${size}">next</a>
 </li>
 </ul>
+</div>
 
 <!-- footer.jsp  -->
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>

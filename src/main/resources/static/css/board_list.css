@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+table th, td{
+	padding: 10px 20px;
+}
+
+thead {
+	font-weight: bold;
+	border-bottom: 1px solid #333;
+	background-color: yellow;
+}
+
+tbody tr{
+	border-bottom: 1px solid gray;
+}
+
+.pagination {
+	display: flex;
+}
+
+.btn {
+	display: inline-block;
+	border-radius: 20px;
+	padding: 5px 10px;
+	background-color: green;
+	color: #fff;
+}
+
+.btn:hover {
+	background-color: yellow;
+	color: green;
+}
