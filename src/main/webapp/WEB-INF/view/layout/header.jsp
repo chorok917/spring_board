@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판</title>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/board_form.css">
 </head>
 <body>

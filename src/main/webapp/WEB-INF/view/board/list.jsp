@@ -4,7 +4,7 @@
 <!-- header.jsp  -->
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
 
-<a href="/board/create">게시글 작성하러 가기</a>
+<a href="/board/create" class="btn">게시글 작성하러 가기</a>
 
 <c:choose>
 <c:when test="${boardList != null}">
