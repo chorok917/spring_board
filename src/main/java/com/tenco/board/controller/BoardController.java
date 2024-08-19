@@ -17,10 +17,6 @@ import com.tenco.board.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
 
-
-
-
-
 @Controller
 @RequestMapping("/board")
 @RequiredArgsConstructor
@@ -31,6 +27,7 @@ public class BoardController {
 
 	/**
 	 * 게시글 작성 페이지
+	 * 주소 설계 : localhost:8080/board/create
 	 * @return create.jsp
 	 */
 	@GetMapping("/create")
@@ -38,6 +35,11 @@ public class BoardController {
 		return "board/create";
 	}
 	
+	/**
+	 * 게시글 작성 로직
+	 * @param boardDTO
+	 * @return list.jsp
+	 */
 	@PostMapping("/create")
 	public String createBoardProc(BoardDTO boardDTO) {
 		boardService.createBoard(boardDTO);
@@ -46,14 +48,12 @@ public class BoardController {
 	
 	/**
 	 * 게시글 리스트 보기
+	 * 주소 설계 : localhost:8080/board/list
 	 * @return list.jsp
 	 */
 	@GetMapping("/list")
 	public String listPage(Model model,@RequestParam(name = "page" , defaultValue = "1") int page, @RequestParam(name = "size" , defaultValue = "5") int size) {
-		System.out.println("********************");
-		System.out.println("페이지 받기 : " + page);
 		int offset = (page - 1) * size;
-		System.out.println("오프셋 : " + offset);
 		List<Board> boardList = boardService.readAllBoardList(size,offset);
 		int totalBoard = boardService.countAllBoard();
 		int totalPages = (int)Math.ceil((double)totalBoard/size); 
@@ -81,6 +81,12 @@ public class BoardController {
 		return "board/view";
 	}
 
+	/**
+	 * 게시글 수정 페이지
+	 * @param model
+	 * @param boardId
+	 * @return update.jsp
+	 */
 	@GetMapping("/update/{boardId}")
 	public String updatePage(Model model,@PathVariable(name="boardId") Integer boardId) {
 		Board board = boardService.viewBoard(boardId);
@@ -88,6 +94,11 @@ public class BoardController {
 		return "board/update";
 	}
 	
+	/**
+	 * 게시글 수정 로직
+	 * @param boardDTO
+	 * @return
+	 */
 	@PostMapping("/update")
 	public String postMethodName(BoardDTO boardDTO) {
 		System.out.println("수정할 값 : " + boardDTO);
@@ -95,6 +106,11 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
+	/**
+	 * 게시글 삭제 로직
+	 * @param boardId
+	 * @return
+	 */
 	@GetMapping("/delete/{boardId}")
 	public String delete(@PathVariable(name="boardId") Integer boardId) {
 		boardService.deleteBoard(boardId);
